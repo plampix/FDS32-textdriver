@@ -1,3 +1,4 @@
+<pre>
 Pinout:
 
 /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
@@ -24,6 +25,6 @@ Pinout:
 7: NC
 8: NC
 9: Gnd
-
+</pre>
 
 Modified from Bart de Waal's FDS132 Textdriver, https://github.com/BartDeWaal/FDS132-textdriver
