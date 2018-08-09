@@ -1,4 +1,9 @@
 #include "font.h"
+#if defined (ESP8266)
+#include <pgmspace.h>
+#else
+#include <avr/pgmspace.h>
+#endif
 
 fdsChar fdsChara;
 fdsChar fdsCharb;
@@ -70,7 +75,9 @@ fdsChar fdsCharBang;
 fdsChar fdsCharDash;
 fdsChar fdsCharSpace;
 fdsChar fdsCharComma;
+fdsChar fdsCharFullStop;
 fdsChar fdsCharSingleQuote;
+fdsChar fdsCharDegrees;
 fdsChar fdsCharUnknown;
 
 void initialiseLetters() {
@@ -684,6 +691,25 @@ void initialiseLetters() {
   fdsCharBang.character_map[6] = B00000001;
   fdsCharBang.width = 2;
 
+  fdsCharFullStop.character_map[0] = B00000000;
+  fdsCharFullStop.character_map[1] = B00000000;
+  fdsCharFullStop.character_map[2] = B00000000;
+  fdsCharFullStop.character_map[3] = B00000000;
+  fdsCharFullStop.character_map[4] = B00000000;
+  fdsCharFullStop.character_map[5] = B00000011;
+  fdsCharFullStop.character_map[6] = B00000011;
+  fdsCharFullStop.width = 3;
+
+  fdsCharDegrees.character_map[0] = B00000010;
+  fdsCharDegrees.character_map[1] = B00000101;
+  fdsCharDegrees.character_map[2] = B00000010;
+  fdsCharDegrees.character_map[3] = B00000000;
+  fdsCharDegrees.character_map[4] = B00000000;
+  fdsCharDegrees.character_map[5] = B00000000;
+  fdsCharDegrees.character_map[6] = B00000000;
+  fdsCharDegrees.width = 4;
+
+
   fdsCharUnknown.character_map[0] = B00000111;
   fdsCharUnknown.character_map[1] = B00000111;
   fdsCharUnknown.character_map[2] = B00000111;
@@ -834,7 +860,10 @@ fdsChar* charTofdsChar(char value) {
       return &fdsCharBang;
     case ' ':
       return &fdsCharSpace;
-
+    case '.':
+      return &fdsCharFullStop;
+    case 127:
+      return &fdsCharDegrees;
     default:
       return &fdsCharUnknown;
   }
